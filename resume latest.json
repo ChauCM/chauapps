@@ -1,0 +1,231 @@
+{
+  "selectedTemplate": 6,
+  "headings": {
+    "awards": ""
+  },
+  "basics": {
+    "name": "Cao Minh Chau",
+    "phone": "(+84) 0876543444",
+    "email": "averagechau@gmail.com",
+    "location": {
+      "address": "Ho Chi Minh City, Vietnam"
+    },
+    "website": "https://github.com/ChauCM"
+  },
+  "education": [
+    {
+      "endDate": "Jun 2018",
+      "gpa": "3.6",
+      "startDate": "Sep 2016",
+      "area": "Computer Science",
+      "studyType": "Associate Degree",
+      "location": "Sacramento, California, USA",
+      "institution": "Sacramento City College"
+    },
+    {
+      "institution": "San Jose State University",
+      "location": "San jose, California, USA",
+      "studyType": "Bachelor Degree",
+      "area": "Software Engineer",
+      "gpa": "3.2",
+      "startDate": "Sep 2018",
+      "endDate": "Dec 2019"
+    }
+  ],
+  "work": [
+    {
+      "highlights": [
+        "Working on migrating legacy code from Swift to Flutter",
+        "Architected lesson and exercise structure for game and app navigation",
+        "Delivered Scripted Conversation game and Listening game"
+      ],
+      "company": "ELSA",
+      "position": "Software Engineer",
+      "location": "Ho Chi Minh City, Vietnam",
+      "startDate": "Nov 2024",
+      "endDate": "Present"
+    },
+    {
+      "highlights": [
+        "Lead Cohart mobile team in rewriting React Native app to Flutter",
+        "Design and develop new features for Cohart marketplace and social media platform",
+        "Manage end-to-end development, feature consultation, bug fixing, app releases, and data management",
+        "Contributed 56% of total commits and 66% of total lines of code"
+      ],
+      "company": "Cohart - Coderpush",
+      "position": "Senior Software Engineer",
+      "location": "Ho Chi Minh City, Vietnam",
+      "startDate": "Jun 2022",
+      "endDate": "Nov 2024"
+    },
+    {
+      "highlights": [
+        "Maintained and developed new features for EtonHouse Teacher and Parents apps",
+        "Led iterative development of two interconnected Flutter apps serving 120 schools across 11 countries",
+        "Integrated third-party services like push notifications, app tracking, and analytics",
+        "Set up temperature thermometer and other hardware integrations",
+        "Managed feature design, release processes, and testing procedures",
+        "Contributed 68% of total commits and 62% of total lines of code"
+      ],
+      "company": "EtonHouse",
+      "position": "Mobile Managing Engineer",
+      "location": "Remote, Singapore",
+      "startDate": "July 2022",
+      "endDate": "Jan 2024"
+    },
+    {
+      "highlights": [
+        "Developed and deployed Dai Thu Thanh iOS, Android, and Web applications using Flutter",
+        "Designed and implemented Dai Thu Thanh backend using Firebase",
+        "Implemented polling, caching, searching, hosting, and CDN functionalities for the app",
+        "Designed and iterated on UX and UI of the Dai Thu Thanh app using Figma",
+        "Led and trained a team of 3 Flutter-Firebase developers"
+      ],
+      "company": "Dai Thu Thanh",
+      "position": "Technical Founder",
+      "location": "Hanoi, Vietnam",
+      "startDate": "Mar 2021",
+      "endDate": "Aug 2022"
+    },
+    {
+      "highlights": [
+        "Developed and deployed three mobile applications from a single codebase",
+        "Implemented web admin and user dashboard using Flutter Web",
+        "Utilized CI/CD pipeline for rapid iteration",
+        "Collaborated with Node.js backend team to design API solutions"
+      ],
+      "company": "Techvify",
+      "location": "Hanoi, Vietnam",
+      "startDate": "Feb 2020",
+      "endDate": "Mar 2021",
+      "position": "Software Engineer"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Mobile Development",
+      "keywords": [
+        "Flutter/Dart",
+        "Bloc, AutoRoute, Freezed",
+        "TDD architecture",
+        "Unit and integration testing",
+        "App flavoring and multi-environment configuration",
+        "CI/CD",
+        "Deep linking",
+        "Xcode/Gradle build system"
+      ]
+    },
+    {
+      "name": "Backend Development",
+      "keywords": [
+        "ASP.NET Web API",
+        "Entity Framework Core",
+        "Microservices architecture",
+        "RESTful API design",
+        "CI/CD pipelines"
+      ]
+    },
+    {
+      "name": "Cloud & DevOps (basic)",
+      "keywords": [
+        "Firebase (Firestore, Cloud Functions, Authentication)",
+        "Cloud Run, Pub/Sub, Cloud Workflows",
+        "Docker",
+        "GitHub Actions",
+        "CI/CD pipelines"
+      ]
+    },
+    {
+      "name": "Programming Languages",
+      "keywords": [
+        "Dart",
+        "C#",
+        "TypeScript",
+        "Python"
+      ]
+    },
+    {
+      "name": "Tools & Methodologies",
+      "keywords": [
+        "Git",
+        "Agile/Scrum",
+        "JIRA",
+        "Figma",
+        "Adobe Suite"
+      ]
+    },
+    {
+      "name": "Languages",
+      "keywords": [
+        "Vietnamese (Native)",
+        "English (Professional Working Proficiency)"
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "keywords": [
+        "Flutter, Swift, Lottie, Rive, Lokalise, Firebase,..."
+      ],
+      "name": "ELSA Speak - English Learning",
+      "url": "https://apps.apple.com/us/app/elsa-speak-english-learning/id1083804886",
+      "description": "https://elsaspeak.com/ - ELSA Speak: The world's best way to improve your English"
+    },
+    {
+      "keywords": [
+        "Flutter, GitHub Actions, Firebase, TypeScript, Node.js"
+      ],
+      "name": "Cohart",
+      "url": "https://apps.apple.com/us/app/cohart/id1554034352",
+      "description": "https://www.cohart.com - A social platform for art discovery (IOS)"
+    },
+    {
+      "keywords": [
+        "Flutter, .NET, GitHub Actions, Firebase"
+      ],
+      "name": "EtonHouse Teachers (2022)",
+      "url": "https://apps.apple.com/us/app/etonhouse-teacher/id1639496874",
+      "description": "EtonHouse mobile app to assist teachers in their daily operations (Android & IOS)"
+    },
+    {
+      "keywords": [
+        "Flutter, .NET, GitHub Actions, Firebase"
+      ],
+      "name": "EtonHouse Parents (2022)",
+      "description": "EtonHouse Parents App to keep parents updated on their children's activities in school (Android & IOS)",
+      "url": "https://apps.apple.com/us/app/etonhouse-parents/id6443718169"
+    },
+    {
+      "keywords": [
+        "Flutter, Firebase, Typesense, GitHub Actions, WordPress"
+      ],
+      "name": "Dai Thu Thanh (2020-2022)",
+      "url": "https://daithuthanh.vn/",
+      "description": "A Viet Nam podcast mobile and web app focused on Vietnamese content and experience. (Android, IOS, and Web)"
+    },
+    {
+      "keywords": [
+        "Flutter"
+      ],
+      "name": "Safesteps (2019 - 2021)",
+      "description": "SafeStep is an app created for Bangladeshis seeking safe, reliable overseas employment."
+    }
+  ],
+  "awards": [
+    {
+      "title": "",
+      "date": "",
+      "awarder": "",
+      "summary": ""
+    }
+  ],
+  "sections": [
+    "templates",
+    "profile",
+    "education",
+    "work",
+    "skills",
+    "projects",
+    "awards"
+  ]
+}
