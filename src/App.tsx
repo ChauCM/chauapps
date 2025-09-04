@@ -73,7 +73,7 @@ ${formData.name}
     `.trim();
 
     // Encode for URL
-    const mailtoLink = `mailto:hello@chauapps.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailtoLink = `mailto:contact@chauapps.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
     // Open email client
     window.location.href = mailtoLink;
@@ -785,8 +785,8 @@ ${formData.name}
 
               <div className="text-center text-gray-600">
                 <p>Or email us directly at</p>
-                <a href="mailto:hello@chauapps.com" className="text-purple-600 font-semibold hover:text-purple-700">
-                  hello@chauapps.com
+                <a href="mailto:contact@chauapps.com" className="text-purple-600 font-semibold hover:text-purple-700">
+                  contact@chauapps.com
                 </a>
               </div>
             </form>
