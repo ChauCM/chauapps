@@ -48,17 +48,17 @@ function Portfolio() {
                   <div className="flex-1">
                     <p className="text-lg text-comic-brown leading-relaxed mb-4">
                       Flutter developer with 5+ years building cross platform applications serving hundreds of thousands of users.
-                      Experienced in hardware integration, real time systems, and scaling mobile applications.
+                      Experienced in interactive animations with Rive and Lottie, expressive UI, and scaling mobile applications.
                     </p>
                     <p className="text-lg text-comic-dark font-medium leading-relaxed">
-                      I turn complex ideas into launched products, handling everything from design to deployment.
+                      I turn complex ideas into polished, animated experiences—from interactive avatars to production apps on both stores.
                     </p>
                     <div className="mt-6 flex flex-wrap gap-3">
                       <span className="px-4 py-2 bg-comic-beige/30 text-comic-dark border border-comic-beige rounded-full text-sm font-medium">
                         Flutter Expert
                       </span>
                       <span className="px-4 py-2 bg-comic-beige/30 text-comic-dark border border-comic-beige rounded-full text-sm font-medium">
-                        Cross Platform
+                        Rive & Lottie Animations
                       </span>
                       <span className="px-4 py-2 bg-comic-beige/30 text-comic-dark border border-comic-beige rounded-full text-sm font-medium">
                         5+ Years Experience
@@ -124,16 +124,16 @@ function Portfolio() {
                       elsaspeak.com
                     </a>
                     <p className="text-comic-brown mb-6 leading-relaxed">
-                      Shipped 4 core learning games with Lottie and Rive animations serving 400K+ weekly active users.
-                      Integrated Amplitude analytics for data driven improvements.
-                      Rolling out Flutter Web version with full animation support.
+                      Built 4 interactive learning games with expressive animated characters using Rive and Lottie, serving 400K+ weekly active users.
+                      Designed responsive character states and transitions triggered by user input, managed with Bloc state logic.
+                      Optimized animation performance across iOS, Android, and Flutter Web for smooth cross-device delivery.
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Bloc</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">RxDart</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Lottie</span>
                       <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Rive</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Amplitude</span>
+                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Lottie</span>
+                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Bloc</span>
+                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">State Transitions</span>
+                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Animation Performance</span>
                       <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Flutter Web</span>
                     </div>
                   </div>
@@ -264,16 +264,16 @@ function Portfolio() {
                     <p className="text-comic-brown">ASP.NET Core, PostgreSQL, Firebase</p>
                   </div>
                   <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Hardware</h3>
-                    <p className="text-comic-brown">BLE, NFC, Bluetooth</p>
+                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Animation</h3>
+                    <p className="text-comic-brown">Rive, Lottie, Vector Graphics</p>
                   </div>
                   <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Payment</h3>
-                    <p className="text-comic-brown">Stripe SDK, Tap to Pay</p>
+                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Performance</h3>
+                    <p className="text-comic-brown">Animation Profiling, Cross-device QA</p>
                   </div>
                   <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Mapping</h3>
-                    <p className="text-comic-brown">flutter_map, Mapbox</p>
+                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Integration</h3>
+                    <p className="text-comic-brown">BLE, NFC, Stripe SDK</p>
                   </div>
                   <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
                     <h3 className="text-lg font-semibold text-comic-orange mb-3">Analytics</h3>
