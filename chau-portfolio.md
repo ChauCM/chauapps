@@ -1,4 +1,4 @@
-# Cao Minh Chau - Flutter Developer Portfolio
+# Cao Minh Chau - Mobile Engineer Portfolio
 
 ---
 
@@ -6,7 +6,7 @@
 
 ![Profile](profile.jpg)
 
-Flutter developer with 5+ years building cross-platform applications serving hundreds of thousands of users. Experienced in hardware integration, real-time systems, and scaling mobile applications.
+Mobile engineer with 5+ years specializing in Flutter, building cross-platform applications serving hundreds of thousands of users. Experienced in hardware integration, real-time systems, and scaling mobile applications.
 
 ---
 

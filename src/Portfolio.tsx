@@ -29,7 +29,7 @@ function Portfolio() {
               <h1 className="text-6xl font-bold text-comic-dark mb-4">
                 Cao Minh Chau
               </h1>
-              <p className="text-2xl text-comic-brown">Flutter Developer</p>
+              <p className="text-2xl text-comic-brown">Senior Mobile Engineer · Flutter Specialist</p>
               <div className="mt-4 h-1 w-24 bg-comic-orange mx-auto rounded-full"></div>
             </div>
 
@@ -47,7 +47,7 @@ function Portfolio() {
                   </div>
                   <div className="flex-1">
                     <p className="text-lg text-comic-brown leading-relaxed mb-4">
-                      Flutter developer with 5+ years building cross platform applications serving hundreds of thousands of users.
+                      Mobile engineer with 5+ years specializing in Flutter, building cross-platform applications serving hundreds of thousands of users.
                       Experienced in interactive animations with Rive and Lottie, expressive UI, and scaling mobile applications.
                     </p>
                     <p className="text-lg text-comic-dark font-medium leading-relaxed">
@@ -55,7 +55,7 @@ function Portfolio() {
                     </p>
                     <div className="mt-6 flex flex-wrap gap-3">
                       <span className="px-4 py-2 bg-comic-beige/30 text-comic-dark border border-comic-beige rounded-full text-sm font-medium">
-                        Flutter Expert
+                        Flutter Specialist
                       </span>
                       <span className="px-4 py-2 bg-comic-beige/30 text-comic-dark border border-comic-beige rounded-full text-sm font-medium">
                         Rive & Lottie Animations

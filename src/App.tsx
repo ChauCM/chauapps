@@ -56,8 +56,8 @@ function App() {
                     Hi, I'm Chau
                   </h2>
                   <p className="text-lg text-comic-brown leading-relaxed mb-4">
-                    Flutter developer with 5+ years building high quality
-                    cross-platform UI serving millions of users — from art
+                    Mobile engineer with 5+ years specializing in Flutter,
+                    building cross-platform UI for millions of users, from art
                     marketplaces to language-learning apps used by 90M+ people.
                     I focus on shipping simple, performant experiences and
                     writing about the engineering decisions behind them.
