@@ -1,337 +1,355 @@
-import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Phone, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion'
+import { Github, Linkedin, Mail, Phone, ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
+
+const topics = [
+  { name: 'Flutter', dot: 'bg-blue-500' },
+  { name: 'Animation', dot: 'bg-purple-500' },
+  { name: 'Scale', dot: 'bg-emerald-500' },
+  { name: 'Architecture', dot: 'bg-amber-500' },
+]
+
+type ProjectImage = {
+  src: string
+  alt?: string
+  fit?: 'cover' | 'contain'
+  flex?: number
+}
+
+type Project = {
+  title: string
+  url?: string
+  urlLabel?: string
+  description: string
+  image?: string
+  imageFit?: 'cover' | 'contain'
+  images?: ProjectImage[]
+  stack: string[]
+  meta: string
+}
+
+const projects: Project[] = [
+  {
+    title: 'Cohart Art Marketplace',
+    url: 'https://www.cohart.com',
+    urlLabel: 'www.cohart.com',
+    image: '/images/cohart.webp',
+    description:
+      'Built a high-quality visual social platform for artists and collectors. Implemented NFC card scanning and Stripe tap-to-pay for seamless art purchases. Crafted pixel-perfect UI showcasing artwork with gallery-grade presentation.',
+    stack: ['Flutter', 'NFC', 'Stripe SDK', 'Tap to Pay'],
+    meta: 'Mobile · Marketplace',
+  },
+  {
+    title: 'ELSA Speak Learning Games',
+    url: 'https://elsaspeak.com',
+    urlLabel: 'elsaspeak.com',
+    images: [
+      { src: '/images/elsa-web.jpg', alt: 'ELSA Web', fit: 'cover', flex: 1.4 },
+      { src: '/images/elsa-mobile.png', alt: 'ELSA Mobile', fit: 'contain', flex: 0.6 },
+    ],
+    description:
+      'Built 4 interactive learning games with expressive animated characters using Rive and Lottie, serving 400K+ weekly active users. Designed responsive character states triggered by user input with Bloc state logic. Optimized animation performance across iOS, Android, and Flutter Web.',
+    stack: ['Rive', 'Lottie', 'Bloc', 'Flutter Web', 'Animation Performance'],
+    meta: 'Mobile + Web · EdTech',
+  },
+  {
+    title: 'EtonHouse School Management',
+    url: 'https://www.etonhouse.edu.sg',
+    urlLabel: 'www.etonhouse.edu.sg',
+    image: '/images/ble-bluetooth.gif',
+    imageFit: 'contain',
+    description:
+      'Integrated Bluetooth OEM thermometers for contactless temperature monitoring across 12 schools. Built the complete BLE connection handling, data sync, and error recovery system.',
+    stack: ['Flutter', 'BLE', 'Real-time Sync'],
+    meta: 'Mobile · Education',
+  },
+  {
+    title: 'Student Check-in System',
+    description:
+      'Developed location-based check-in with flutter_map and Mapbox tiles. Implemented reverse geocoding for address display and student check-in that displays positions on interactive maps.',
+    stack: ['flutter_map', 'Mapbox', 'Geocoding'],
+    meta: 'Mobile · Geolocation',
+  },
+  {
+    title: '4 Apps from a Single Codebase',
+    description:
+      'Deployed 4 customized app variants for different schools using Flutter flavors. Maintained iOS, Android, and Web versions with shared business logic.',
+    stack: ['Flutter Flavors', 'Codemagic', 'CI/CD'],
+    meta: 'Mobile · Infrastructure',
+  },
+]
+
+const skillGroups: Array<{ label: string; value: string }> = [
+  { label: 'Languages', value: 'Dart, TypeScript, C#' },
+  { label: 'State Management', value: 'Bloc, Provider, RxDart' },
+  { label: 'Animation', value: 'Rive, Lottie, Vector Graphics' },
+  { label: 'Backend', value: 'ASP.NET Core, PostgreSQL, Firebase' },
+  { label: 'Performance', value: 'Animation Profiling, Cross-device QA' },
+  { label: 'Integration', value: 'BLE, NFC, Stripe SDK' },
+  { label: 'Analytics', value: 'Sentry, Amplitude' },
+  { label: 'Tools', value: 'Git, Docker, Figma' },
+]
+
+function SectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3 mb-7">
+      <h2 className="text-[11px] font-semibold tracking-[0.16em] uppercase text-ink-faint">
+        {children}
+      </h2>
+      <div className="h-px flex-1 bg-rule" />
+    </div>
+  )
+}
 
 function Portfolio() {
   return (
-    <div className="min-h-screen bg-comic-cream font-sans text-comic-dark">
-      <div className="relative">
-        {/* Navigation Back */}
-        <div className="absolute top-6 left-6 z-10">
-          <Link 
-            to="/" 
-            className="flex items-center gap-2 px-4 py-2 bg-white border border-comic-beige rounded-full text-comic-brown hover:text-comic-orange hover:shadow-md transition-all"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Home
-          </Link>
-        </div>
+    <div className="relative min-h-screen bg-paper font-sans text-ink flex flex-col overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px]"
+        style={{
+          background:
+            'radial-gradient(60% 80% at 50% 0%, rgba(0,102,255,0.07), rgba(0,102,255,0.02) 45%, transparent 75%)',
+        }}
+      />
 
-        {/* Main Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* Header */}
-            <div className="text-center mb-16 pt-12">
-              <h1 className="text-6xl font-bold text-comic-dark mb-4">
-                Cao Minh Chau
-              </h1>
-              <p className="text-2xl text-comic-brown">Senior Mobile Engineer · Flutter Specialist</p>
-              <div className="mt-4 h-1 w-24 bg-comic-orange mx-auto rounded-full"></div>
+      <nav className="sticky top-0 left-0 right-0 bg-paper/85 backdrop-blur-md z-40">
+        <div className="max-w-[680px] mx-auto px-6">
+          <div className="flex justify-between items-center h-14">
+            <Link to="/" className="text-base font-semibold tracking-tight text-ink">
+              Chau
+            </Link>
+            <Link
+              to="/"
+              className="inline-flex items-center gap-1 text-sm text-ink-muted hover:text-brand transition-colors"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" />
+              Writing
+            </Link>
+          </div>
+        </div>
+      </nav>
+
+      <main className="flex-1 max-w-[680px] w-full mx-auto px-6 pt-12 pb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+        >
+          <header className="mb-12">
+            <div className="text-[11px] font-semibold tracking-[0.16em] uppercase text-ink-faint mb-3">
+              Portfolio
             </div>
-
-            {/* About Me */}
-            <section className="mb-20">
-              <div className="bg-white rounded-3xl shadow-lg border-2 border-comic-beige p-10">
-                <h2 className="text-3xl font-bold text-comic-dark mb-8">About Me</h2>
-                <div className="flex flex-col md:flex-row items-center gap-10">
-                  <div className="w-56 h-56 flex-shrink-0">
-                    <img
-                      src="/images/profile.jpg"
-                      alt="Cao Minh Chau"
-                      className="w-full h-full rounded-2xl object-cover shadow-md border border-comic-beige"
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-lg text-comic-brown leading-relaxed mb-4">
-                      Mobile engineer with 5+ years specializing in Flutter, building cross-platform applications serving hundreds of thousands of users.
-                      Experienced in interactive animations with Rive and Lottie, expressive UI, and scaling mobile applications.
-                    </p>
-                    <p className="text-lg text-comic-dark font-medium leading-relaxed">
-                      I turn complex ideas into polished, animated experiences—from interactive avatars to production apps on both stores.
-                    </p>
-                    <div className="mt-6 flex flex-wrap gap-3">
-                      <span className="px-4 py-2 bg-comic-beige/30 text-comic-dark border border-comic-beige rounded-full text-sm font-medium">
-                        Flutter Specialist
-                      </span>
-                      <span className="px-4 py-2 bg-comic-beige/30 text-comic-dark border border-comic-beige rounded-full text-sm font-medium">
-                        Rive & Lottie Animations
-                      </span>
-                      <span className="px-4 py-2 bg-comic-beige/30 text-comic-dark border border-comic-beige rounded-full text-sm font-medium">
-                        5+ Years Experience
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Projects */}
-            <section className="mb-20">
-              <h2 className="text-4xl font-bold text-center text-comic-dark mb-12">Featured Projects</h2>
-
-              {/* Cohart */}
-              <motion.div
-                className="bg-white rounded-3xl shadow-lg border-2 border-comic-beige overflow-hidden mb-10"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <div className="grid md:grid-cols-2 gap-0">
-                  <div className="h-96 bg-comic-cream/50 border-r border-comic-beige">
-                    <img
-                      src="/images/cohart.webp"
-                      alt="Cohart Art Marketplace"
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="p-10 flex flex-col justify-center">
-                    <h3 className="text-2xl font-bold text-comic-dark mb-2">Cohart Art Marketplace</h3>
-                    <a href="https://www.cohart.com" target="_blank" rel="noopener noreferrer" className="text-comic-orange hover:text-orange-700 mb-4 text-sm font-medium">
-                      www.cohart.com
-                    </a>
-                    <p className="text-comic-brown mb-6 leading-relaxed">
-                      Built high quality visual social platform for artists and collectors. Implemented NFC card scanning
-                      and Stripe tap to pay for seamless art purchases. Crafted pixel perfect UI showcasing artwork with
-                      gallery grade presentation.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Flutter</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">NFC</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Stripe SDK</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Tap to Pay</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* ELSA */}
-              <motion.div
-                className="bg-white rounded-3xl shadow-lg border-2 border-comic-beige overflow-hidden mb-10"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <div className="grid md:grid-cols-2 gap-0">
-                  <div className="p-10 flex flex-col justify-center order-2 md:order-1">
-                    <h3 className="text-2xl font-bold text-comic-dark mb-2">ELSA Speak Learning Games</h3>
-                    <a href="https://elsaspeak.com" target="_blank" rel="noopener noreferrer" className="text-comic-orange hover:text-orange-700 mb-4 text-sm font-medium">
-                      elsaspeak.com
-                    </a>
-                    <p className="text-comic-brown mb-6 leading-relaxed">
-                      Built 4 interactive learning games with expressive animated characters using Rive and Lottie, serving 400K+ weekly active users.
-                      Designed responsive character states and transitions triggered by user input, managed with Bloc state logic.
-                      Optimized animation performance across iOS, Android, and Flutter Web for smooth cross-device delivery.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Rive</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Lottie</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Bloc</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">State Transitions</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Animation Performance</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Flutter Web</span>
-                    </div>
-                  </div>
-                  <div className="h-96 bg-comic-cream/50 border-l border-comic-beige order-1 md:order-2">
-                    <div className="flex gap-2 h-full p-4">
-                      <div className="flex-[1.3] h-full overflow-hidden rounded-lg border border-comic-beige">
-                        <img
-                          src="/images/elsa-web.jpg"
-                          alt="ELSA Web"
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="flex-[0.7] h-full overflow-hidden rounded-lg border border-comic-beige">
-                        <img
-                          src="/images/elsa-mobile.png"
-                          alt="ELSA Mobile"
-                          className="w-full h-full object-contain bg-white"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* EtonHouse */}
-              <motion.div
-                className="bg-white rounded-3xl shadow-lg border-2 border-comic-beige overflow-hidden mb-10"
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5 }}
-                viewport={{ once: true }}
-              >
-                <div className="grid md:grid-cols-2 gap-0">
-                  <div className="h-80 bg-comic-cream/50 border-r border-comic-beige flex items-center justify-center p-6">
-                    <img
-                      src="/images/ble-bluetooth.gif"
-                      alt="BLE Device Integration"
-                      className="max-w-full max-h-full w-auto h-auto rounded-2xl shadow-md object-contain border border-comic-beige"
-                    />
-                  </div>
-                  <div className="p-10 flex flex-col justify-center">
-                    <h3 className="text-2xl font-bold text-comic-dark mb-2">EtonHouse School Management</h3>
-                    <a href="https://www.etonhouse.edu.sg" target="_blank" rel="noopener noreferrer" className="text-comic-orange hover:text-orange-700 mb-4 text-sm font-medium">
-                      www.etonhouse.edu.sg
-                    </a>
-                    <p className="text-comic-brown mb-6 leading-relaxed">
-                      Integrated Bluetooth OEM thermometers for contactless temperature monitoring across 12 schools.
-                      Built the complete BLE connection handling, data sync, and error recovery system.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Flutter</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">BLE</span>
-                      <span className="px-3 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded-lg text-sm">Real Time Sync</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Additional Projects in Cards */}
-              <div className="grid md:grid-cols-2 gap-8">
-                {/* Student Check-in */}
-                <motion.div
-                  className="bg-white rounded-2xl shadow-lg border-2 border-comic-beige p-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                  viewport={{ once: true }}
+            <h1 className="text-[44px] md:text-[56px] font-bold tracking-[-0.035em] leading-[1.02] text-ink mb-3">
+              Cao Minh Chau
+            </h1>
+            <p className="text-lg text-ink-muted leading-relaxed mb-6">
+              Senior Mobile Engineer · Flutter Specialist
+            </p>
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              {topics.map((t) => (
+                <span
+                  key={t.name}
+                  className="inline-flex items-center gap-1.5 text-[12px] font-medium text-ink-muted"
                 >
-                  <div className="mb-4">
-                    <div className="w-12 h-12 bg-comic-orange rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                      📍
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-comic-dark mb-3">Student Check in System</h3>
-                  <p className="text-comic-brown mb-4">
-                    Developed location based check in with flutter_map and Mapbox tiles. Implemented reverse geocoding
-                    for address display and location-based student check-in that displays positions on interactive maps.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded text-xs">flutter_map</span>
-                    <span className="px-2 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded text-xs">Mapbox</span>
-                    <span className="px-2 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded text-xs">Geocoding</span>
-                  </div>
-                </motion.div>
+                  <span className={`w-1.5 h-1.5 rounded-full ${t.dot}`} />
+                  {t.name}
+                </span>
+              ))}
+            </div>
+          </header>
 
-                {/* Multi-Platform */}
-                <motion.div
-                  className="bg-white rounded-2xl shadow-lg border-2 border-comic-beige p-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  viewport={{ once: true }}
+          <section className="mb-16 flex items-start gap-5">
+            <img
+              src="/images/profile.jpg"
+              alt="Cao Minh Chau"
+              className="w-16 h-16 rounded-full object-cover flex-shrink-0 shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_8px_24px_-8px_rgba(0,0,0,0.12)]"
+            />
+            <div className="flex-1 min-w-0">
+              <p className="text-[15px] text-ink-muted leading-[1.65] mb-2">
+                Mobile engineer with 5+ years specializing in Flutter, building
+                cross-platform applications serving hundreds of thousands of
+                users. Experienced in interactive animations with Rive and
+                Lottie, expressive UI, and scaling mobile applications.
+              </p>
+              <p className="text-[15px] text-ink leading-[1.65] mb-3">
+                I turn complex ideas into polished, animated experiences — from
+                interactive avatars to production apps on both stores.
+              </p>
+              <div className="flex items-center gap-4 text-ink-faint">
+                <a
+                  href="https://github.com/chaucm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand transition-colors"
+                  aria-label="GitHub"
                 >
-                  <div className="mb-4">
-                    <div className="w-12 h-12 bg-comic-tan rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                      📱
+                  <Github className="w-[18px] h-[18px]" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/averagechau/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-brand transition-colors"
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-[18px] h-[18px]" />
+                </a>
+                <a
+                  href="mailto:averagechau@gmail.com"
+                  className="hover:text-brand transition-colors"
+                  aria-label="Email"
+                >
+                  <Mail className="w-[18px] h-[18px]" />
+                </a>
+              </div>
+            </div>
+          </section>
+
+          <SectionLabel>Selected Projects</SectionLabel>
+          <div className="flex flex-col gap-14 mb-16">
+            {projects.map((p, i) => (
+              <motion.article
+                key={p.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: i * 0.04 }}
+                viewport={{ once: true }}
+              >
+                {p.images ? (
+                  <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-rule/30 mb-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_12px_40px_-12px_rgba(0,0,0,0.18)]">
+                    <div className="absolute inset-0 flex gap-2 p-3">
+                      {p.images.map((img) => (
+                        <div
+                          key={img.src}
+                          className="h-full overflow-hidden rounded-lg bg-white"
+                          style={{ flex: img.flex ?? 1 }}
+                        >
+                          <img
+                            src={img.src}
+                            alt={img.alt ?? p.title}
+                            className={`w-full h-full ${img.fit === 'contain' ? 'object-contain' : 'object-cover'}`}
+                          />
+                        </div>
+                      ))}
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-comic-dark mb-3">4 Apps from Single Codebase</h3>
-                  <p className="text-comic-brown mb-4">
-                    Deployed 4 customized app variants for different schools using Flutter flavors.
-                    Maintained iOS, Android, and Web versions with shared business logic.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="px-2 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded text-xs">Flutter Flavors</span>
-                    <span className="px-2 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded text-xs">Codemagic</span>
-                    <span className="px-2 py-1 bg-comic-cream border border-comic-beige text-comic-dark rounded text-xs">CI/CD</span>
+                ) : p.image ? (
+                  <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-rule/30 mb-5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_12px_40px_-12px_rgba(0,0,0,0.18)]">
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      className={`w-full h-full ${p.imageFit === 'contain' ? 'object-contain p-6' : 'object-cover'}`}
+                    />
                   </div>
-                </motion.div>
-              </div>
-            </section>
-
-            {/* Technical Skills */}
-            <section className="mb-20">
-              <div className="bg-white rounded-3xl shadow-lg border-2 border-comic-beige p-10">
-                <h2 className="text-3xl font-bold text-comic-dark mb-8">Technical Skills</h2>
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Languages</h3>
-                    <p className="text-comic-brown">Dart, TypeScript, C#</p>
-                  </div>
-                  <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">State Management</h3>
-                    <p className="text-comic-brown">Bloc, Provider, RxDart</p>
-                  </div>
-                  <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Backend</h3>
-                    <p className="text-comic-brown">ASP.NET Core, PostgreSQL, Firebase</p>
-                  </div>
-                  <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Animation</h3>
-                    <p className="text-comic-brown">Rive, Lottie, Vector Graphics</p>
-                  </div>
-                  <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Performance</h3>
-                    <p className="text-comic-brown">Animation Profiling, Cross-device QA</p>
-                  </div>
-                  <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Integration</h3>
-                    <p className="text-comic-brown">BLE, NFC, Stripe SDK</p>
-                  </div>
-                  <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Analytics</h3>
-                    <p className="text-comic-brown">Sentry, Amplitude</p>
-                  </div>
-                  <div className="bg-comic-cream/30 border border-comic-beige rounded-xl p-6">
-                    <h3 className="text-lg font-semibold text-comic-orange mb-3">Tools</h3>
-                    <p className="text-comic-brown">Git, Docker, Figma</p>
-                  </div>
-                </div>
-              </div>
-            </section>
-
-            {/* Contact */}
-            <section>
-              <div className="bg-comic-dark rounded-3xl shadow-xl p-10 text-comic-cream">
-                <h2 className="text-3xl font-bold mb-8 text-center">Let's Connect</h2>
-                <div className="flex flex-wrap justify-center gap-4">
+                ) : null}
+                <div className="text-[12px] text-ink-faint mb-2">{p.meta}</div>
+                <h3 className="text-[22px] font-bold tracking-[-0.02em] leading-snug text-ink mb-2">
+                  {p.title}
+                </h3>
+                {p.url && (
                   <a
-                    href="mailto:averagechau@gmail.com"
-                    className="flex items-center gap-2 px-6 py-3 bg-white text-comic-dark rounded-xl hover:bg-comic-cream hover:shadow-lg transition-all font-medium"
-                  >
-                    <Mail className="w-5 h-5" />
-                    averagechau@gmail.com
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/averagechau/"
+                    href={p.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-white text-comic-dark rounded-xl hover:bg-comic-cream hover:shadow-lg transition-all font-medium"
+                    className="inline-flex items-center gap-1 text-[13px] font-medium text-brand hover:text-brand-700 transition-colors mb-3"
                   >
-                    <Linkedin className="w-5 h-5" />
-                    LinkedIn
+                    {p.urlLabel ?? p.url}
+                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
-                  <a
-                    href="https://github.com/chaucm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-white text-comic-dark rounded-xl hover:bg-comic-cream hover:shadow-lg transition-all font-medium"
-                  >
-                    <Github className="w-5 h-5" />
-                    GitHub
-                  </a>
-                  <a
-                    href="tel:+84876543444"
-                    className="flex items-center gap-2 px-6 py-3 bg-white text-comic-dark rounded-xl hover:bg-comic-cream hover:shadow-lg transition-all font-medium"
-                  >
-                    <Phone className="w-5 h-5" />
-                    +84 876543444
-                  </a>
+                )}
+                <p className="text-[15px] text-ink-muted leading-relaxed mb-4">
+                  {p.description}
+                </p>
+                <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+                  {p.stack.map((s) => (
+                    <span key={s} className="text-[12px] text-ink-faint">
+                      {s}
+                    </span>
+                  ))}
                 </div>
+              </motion.article>
+            ))}
+          </div>
+
+          <SectionLabel>Stack</SectionLabel>
+          <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-5 mb-16">
+            {skillGroups.map((g) => (
+              <div key={g.label} className="flex flex-col gap-1">
+                <dt className="text-[11px] font-semibold tracking-[0.1em] uppercase text-ink-faint">
+                  {g.label}
+                </dt>
+                <dd className="text-[15px] text-ink">{g.value}</dd>
               </div>
-            </section>
-          </motion.div>
+            ))}
+          </dl>
+
+          <div className="rounded-2xl border border-rule bg-white/60 backdrop-blur-sm p-6 flex items-center gap-4">
+            <div className="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center flex-shrink-0">
+              <Mail className="w-[18px] h-[18px]" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-[15px] font-semibold text-ink leading-tight mb-0.5">
+                Let's build something together.
+              </div>
+              <div className="text-[13px] text-ink-muted truncate">
+                averagechau@gmail.com · +84 876 543 444
+              </div>
+            </div>
+            <a
+              href="mailto:averagechau@gmail.com"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:text-brand-700 transition-colors whitespace-nowrap"
+            >
+              Say hi
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </motion.div>
+      </main>
+
+      <footer className="border-t border-rule">
+        <div className="max-w-[680px] mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="text-xs text-ink-faint">
+            &copy; 2026 Chau Apps Company Limited
+          </div>
+          <div className="flex items-center gap-4 text-ink-faint">
+            <a
+              href="https://github.com/chaucm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand transition-colors"
+              aria-label="GitHub"
+            >
+              <Github className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/averagechau/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+            <a
+              href="mailto:averagechau@gmail.com"
+              className="hover:text-brand transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="w-4 h-4" />
+            </a>
+            <a
+              href="tel:+84876543444"
+              className="hover:text-brand transition-colors"
+              aria-label="Phone"
+            >
+              <Phone className="w-4 h-4" />
+            </a>
+          </div>
         </div>
-      </div>
+      </footer>
     </div>
-  );
+  )
 }
 
-export default Portfolio;
+export default Portfolio

@@ -7,8 +7,10 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    @apply antialiased;
+    @apply antialiased bg-paper text-ink;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    letter-spacing: -0.01em;
   }
 }

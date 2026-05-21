@@ -12,14 +12,14 @@ function BlogPost() {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-comic-cream font-sans text-comic-dark flex flex-col items-center justify-center px-6 text-center">
+      <div className="min-h-screen bg-paper font-sans text-ink flex flex-col items-center justify-center px-6 text-center">
         <h1 className="text-4xl font-bold mb-4">Post not found</h1>
-        <p className="text-comic-brown mb-8">
+        <p className="text-ink-muted mb-8">
           The post you're looking for doesn't exist.
         </p>
         <Link
           to="/"
-          className="inline-flex items-center gap-2 px-6 py-3 bg-comic-orange text-white rounded-full font-medium hover:bg-orange-600 transition-all"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-brand text-white rounded-full font-medium hover:bg-brand-600 transition-all"
         >
           <ArrowLeft className="w-4 h-4" />
           Back to home
@@ -29,9 +29,9 @@ function BlogPost() {
   }
 
   return (
-    <div className="min-h-screen bg-comic-cream font-sans text-comic-dark flex flex-col">
+    <div className="min-h-screen bg-paper font-sans text-ink flex flex-col">
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-comic-orange z-50 origin-left"
+        className="fixed top-0 left-0 right-0 h-1 bg-brand z-50 origin-left"
         style={{ scaleX: scrollYProgress }}
       />
 
@@ -39,7 +39,7 @@ function BlogPost() {
         <div className="mb-10">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-comic-beige rounded-full text-comic-brown hover:text-comic-orange hover:shadow-md transition-all"
+            className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-rule rounded-full text-ink-muted hover:text-brand hover:shadow-md transition-all"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to writing
@@ -52,18 +52,17 @@ function BlogPost() {
           transition={{ duration: 0.5 }}
         >
           <header className="mb-10">
-            <div className="text-sm text-comic-tan font-medium flex items-center gap-2">
+            <div className="text-sm text-ink-faint font-medium flex items-center gap-2">
               <time>{formatPostDate(post.date)}</time>
               <span aria-hidden="true">·</span>
               <span>{readingMinutes(post.content)} min read</span>
             </div>
-            <h1 className="mt-2 text-3xl md:text-4xl font-bold text-comic-dark leading-tight tracking-tight">
+            <h1 className="mt-2 text-3xl md:text-[40px] font-bold text-ink leading-[1.15] tracking-[-0.03em]">
               {post.title}
             </h1>
-            <div className="mt-6 h-1 w-16 bg-comic-orange rounded-full" />
           </header>
 
-          <div className="prose max-w-none text-comic-dark prose-headings:text-comic-dark prose-headings:font-bold prose-h2:mt-12 prose-h2:mb-4 prose-h2:text-2xl prose-h3:text-xl prose-p:leading-[1.75] prose-p:text-comic-dark prose-strong:text-comic-dark prose-a:text-comic-orange prose-a:underline prose-a:underline-offset-2 prose-a:decoration-comic-orange/40 hover:prose-a:decoration-comic-orange prose-blockquote:border-comic-orange prose-blockquote:text-comic-brown prose-blockquote:not-italic prose-hr:border-comic-beige prose-hr:my-10 prose-img:rounded-xl prose-img:border-2 prose-img:border-comic-beige prose-img:shadow-md prose-img:my-8">
+          <div className="prose max-w-none text-ink prose-headings:text-ink prose-headings:font-bold prose-h2:mt-12 prose-h2:mb-4 prose-h2:text-2xl prose-h3:text-xl prose-p:leading-[1.75] prose-p:text-ink prose-strong:text-ink prose-a:text-brand prose-a:underline prose-a:underline-offset-2 prose-a:decoration-brand/40 hover:prose-a:decoration-brand prose-blockquote:border-brand prose-blockquote:text-ink-muted prose-blockquote:not-italic prose-hr:border-rule prose-hr:my-10 prose-img:rounded-xl prose-img:border prose-img:border-rule prose-img:shadow-md prose-img:my-8">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {stripLeadingTitle(post.content, post.title)}
             </ReactMarkdown>
@@ -71,9 +70,9 @@ function BlogPost() {
         </motion.article>
       </main>
 
-      <footer className="bg-comic-dark text-comic-cream py-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-comic-tan text-sm">
-          &copy; 2026 CHAU APPS COMPANY LIMITED. All rights reserved.
+      <footer className="border-t border-rule">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 text-xs text-ink-faint">
+          &copy; 2026 Chau Apps Company Limited
         </div>
       </footer>
     </div>

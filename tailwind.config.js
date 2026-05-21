@@ -88,15 +88,13 @@ export default {
           800: '#002966',
           900: '#001433',
         },
-        'accent': '#00D4FF',
-        'comic': {
-          beige: '#F5E6D3',
-          cream: '#FAF7F2',
-          tan: '#D4A574',
-          brown: '#8B6F47',
-          dark: '#3D2817',
-          orange: '#E67E50',
-        }
+        'paper': '#FAFAFA',
+        'ink': {
+          DEFAULT: '#0A0A0A',
+          muted: '#404040',
+          faint: '#737373',
+        },
+        'rule': '#EAEAEA',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
