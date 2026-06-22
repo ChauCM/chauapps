@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@giscus/react": "^3.1.0",
+    "firebase": "^12.15.0",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.542.0",
     "react": "^19.1.1",

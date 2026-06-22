@@ -1,0 +1,29 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Public, append-only page-view counters.
+    // - Anyone can read the count.
+    // - First view creates the doc with views == 1.
+    // - Each write may only bump `views` by exactly 1 and touch no other field.
+    // - No deletes.
+    // This makes a write worth at most "+1", so the value can't be forged.
+    match /pageviews/{slug} {
+      allow read: if true;
+
+      allow create: if request.resource.data.keys().hasOnly(['views'])
+                    && request.resource.data.views == 1;
+
+      allow update: if request.resource.data.keys().hasOnly(['views'])
+                    && request.resource.data.views == resource.data.views + 1;
+
+      allow delete: if false;
+    }
+
+    // Everything else is denied.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

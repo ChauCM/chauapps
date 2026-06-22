@@ -1,14 +1,17 @@
 import { motion, useScroll } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft } from 'lucide-react'
+import { ArrowLeft, Eye } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getPost, formatPostDate, readingMinutes } from './posts'
+import { useViewCount } from './lib/useViewCount'
+import Comments from './Comments'
 
 function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
   const post = slug ? getPost(slug) : undefined
   const { scrollYProgress } = useScroll()
+  const views = useViewCount(slug)
 
   if (!post) {
     return (
@@ -56,6 +59,15 @@ function BlogPost() {
               <time>{formatPostDate(post.date)}</time>
               <span aria-hidden="true">·</span>
               <span>{readingMinutes(post.content)} min read</span>
+              {views !== null && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span className="inline-flex items-center gap-1">
+                    <Eye className="w-3.5 h-3.5" />
+                    {views.toLocaleString()} views
+                  </span>
+                </>
+              )}
             </div>
             <h1 className="mt-2 text-3xl md:text-[40px] font-bold text-ink leading-[1.15] tracking-[-0.03em]">
               {post.title}
@@ -68,6 +80,8 @@ function BlogPost() {
             </ReactMarkdown>
           </div>
         </motion.article>
+
+        <Comments />
       </main>
 
       <footer className="border-t border-rule">

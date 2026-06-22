@@ -7,8 +7,8 @@ npm run build
 # Check if build was successful
 if [ $? -eq 0 ]; then
     echo "Build successful! Deploying to Firebase..."
-    # Deploy only hosting to Firebase
-    firebase deploy --only hosting
+    # Deploy hosting + Firestore security rules
+    firebase deploy --only hosting,firestore:rules
     
     if [ $? -eq 0 ]; then
         echo "Deployment successful!"

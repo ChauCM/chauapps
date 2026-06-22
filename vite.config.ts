@@ -17,7 +17,7 @@ type PostMeta = {
 const posts: PostMeta[] = [
   {
     slug: '90-million-users-deserve-a-better-app',
-    title: '90 Million Users Deserve a Better App',
+    title: 'I Deleted a Million Lines of Code from an App 90 Million People Use',
     description:
       "Two years at ELSA. The migration that couldn't be done, the day it shipped, and what it took to delete a million lines of code.",
     image: '/images/blog/firebase-performance.png',
