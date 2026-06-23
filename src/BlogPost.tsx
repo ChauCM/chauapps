@@ -74,7 +74,7 @@ function BlogPost() {
             </h1>
           </header>
 
-          <div className="prose max-w-none text-ink prose-headings:text-ink prose-headings:font-bold prose-h2:mt-12 prose-h2:mb-4 prose-h2:text-2xl prose-h3:text-xl prose-p:leading-[1.75] prose-p:text-ink prose-strong:text-ink prose-a:text-brand prose-a:underline prose-a:underline-offset-2 prose-a:decoration-brand/40 hover:prose-a:decoration-brand prose-blockquote:border-brand prose-blockquote:text-ink-muted prose-blockquote:not-italic prose-hr:border-rule prose-hr:my-10 prose-img:rounded-xl prose-img:border prose-img:border-rule prose-img:shadow-md prose-img:my-8">
+          <div className="prose max-w-none text-ink prose-headings:text-ink prose-headings:font-bold prose-h2:mt-12 prose-h2:mb-4 prose-h2:text-2xl prose-h3:text-xl prose-p:leading-[1.75] prose-p:text-ink prose-strong:text-ink prose-a:text-brand prose-a:underline prose-a:underline-offset-2 prose-a:decoration-brand/40 hover:prose-a:decoration-brand prose-blockquote:border-brand prose-blockquote:text-ink-muted prose-blockquote:not-italic prose-hr:border-rule prose-hr:my-10 prose-img:rounded-xl prose-img:border prose-img:border-rule prose-img:shadow-md prose-img:my-8 prose-img:mx-auto prose-img:max-h-[600px] prose-img:w-auto">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
               {stripLeadingTitle(post.content, post.title)}
             </ReactMarkdown>
