@@ -1,6 +1,6 @@
 import { motion, useScroll } from 'framer-motion'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Eye } from 'lucide-react'
+import { ArrowLeft, Eye, Linkedin, Github, Mail } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getPost, formatPostDate, readingMinutes } from './posts'
@@ -85,8 +85,41 @@ function BlogPost() {
       </main>
 
       <footer className="border-t border-rule">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 text-xs text-ink-faint">
-          &copy; 2026 Chau Apps Company Limited
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
+          <p className="text-sm text-ink-muted">
+            Written by <span className="font-semibold text-ink">Chau Cao</span>. Reach out or see more:
+          </p>
+          <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+            <Link
+              to="/portfolio"
+              className="inline-flex items-center gap-1.5 text-brand font-medium hover:underline underline-offset-2"
+            >
+              Portfolio
+            </Link>
+            <a
+              href="https://www.linkedin.com/in/averagechau/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-ink-muted hover:text-brand transition-colors"
+            >
+              <Linkedin className="w-4 h-4" /> LinkedIn
+            </a>
+            <a
+              href="https://github.com/chaucm"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-ink-muted hover:text-brand transition-colors"
+            >
+              <Github className="w-4 h-4" /> GitHub
+            </a>
+            <a
+              href="mailto:averagechau@gmail.com"
+              className="inline-flex items-center gap-1.5 text-ink-muted hover:text-brand transition-colors"
+            >
+              <Mail className="w-4 h-4" /> Email
+            </a>
+          </div>
+          <p className="mt-6 text-xs text-ink-faint">&copy; 2026 Chau Apps Company Limited</p>
         </div>
       </footer>
     </div>
