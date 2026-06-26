@@ -7,6 +7,7 @@ export type Post = {
   excerpt: string
   cover?: string
   content: string
+  discussions?: { label: string; url: string }[]
 }
 
 export function readingMinutes(content: string): number {
@@ -23,6 +24,9 @@ export const posts: Post[] = [
       "Two years at ELSA. The migration that couldn't be done, the day it shipped, and what it took to delete a million lines of code.",
     cover: '/images/blog/firebase-performance.png',
     content: ninetyMillionUsers,
+    discussions: [
+      { label: 'r/FlutterDev', url: 'https://www.reddit.com/r/FlutterDev/s/ZPbECiaLvG' },
+    ],
   },
 ]
 
