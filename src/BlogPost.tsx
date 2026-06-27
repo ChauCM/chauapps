@@ -5,7 +5,6 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getPost, formatPostDate, readingMinutes } from './posts'
 import { useViewCount } from './lib/useViewCount'
-import Comments from './Comments'
 
 function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
@@ -55,7 +54,7 @@ function BlogPost() {
           transition={{ duration: 0.5 }}
         >
           <header className="mb-10">
-            <div className="text-sm text-ink-faint font-medium flex items-center gap-2">
+            <div className="text-sm text-ink-faint font-medium flex flex-wrap items-center gap-2">
               <time>{formatPostDate(post.date)}</time>
               <span aria-hidden="true">·</span>
               <span>{readingMinutes(post.content)} min read</span>
@@ -65,6 +64,27 @@ function BlogPost() {
                   <span className="inline-flex items-center gap-1">
                     <Eye className="w-3.5 h-3.5" />
                     {views.toLocaleString()} views
+                  </span>
+                </>
+              )}
+              {post.discussions && post.discussions.length > 0 && (
+                <>
+                  <span aria-hidden="true">·</span>
+                  <span className="inline-flex items-center gap-1.5">
+                    Discussion:
+                    {post.discussions.map((d, i) => (
+                      <span key={d.url}>
+                        {i > 0 && <span aria-hidden="true"> · </span>}
+                        <a
+                          href={d.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-brand hover:underline underline-offset-2"
+                        >
+                          {d.label}
+                        </a>
+                      </span>
+                    ))}
                   </span>
                 </>
               )}
@@ -80,30 +100,10 @@ function BlogPost() {
             </ReactMarkdown>
           </div>
         </motion.article>
-
-        <Comments />
       </main>
 
       <footer className="border-t border-rule">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
-          {post.discussions && post.discussions.length > 0 && (
-            <p className="mb-6 text-sm text-ink-muted">
-              Discussion:{' '}
-              {post.discussions.map((d, i) => (
-                <span key={d.url}>
-                  {i > 0 && ' · '}
-                  <a
-                    href={d.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-brand hover:underline underline-offset-2"
-                  >
-                    {d.label}
-                  </a>
-                </span>
-              ))}
-            </p>
-          )}
           <p className="text-sm text-ink-muted">
             Written by <span className="font-semibold text-ink">Chau Cao</span>. Reach out or see more:
           </p>
