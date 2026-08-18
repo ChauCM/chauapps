@@ -5,7 +5,7 @@ import { posts, formatPostDate, readingMinutes } from './posts'
 
 const topics = [
   { name: 'Flutter', dot: 'bg-blue-500' },
-  { name: 'Animation', dot: 'bg-purple-500' },
+  { name: 'AI in production', dot: 'bg-purple-500' },
   { name: 'Scale', dot: 'bg-emerald-500' },
   { name: 'Architecture', dot: 'bg-amber-500' },
 ]
@@ -76,10 +76,10 @@ function App() {
             />
             <div className="flex-1 min-w-0">
               <p className="text-[15px] text-ink-muted leading-[1.65] mb-3">
-                I'm <span className="text-ink font-medium">Chau</span> — a mobile
-                engineer with 5+ years in Flutter, building cross-platform UI for
-                millions, from art marketplaces to language-learning apps used by
-                90M+ people.
+                I'm <span className="text-ink font-medium">Chau</span>. I build
+                AI-native apps end to end, from the model to the store listing,
+                and mobile is where I'm deepest. Six years in Flutter, most
+                recently on a language-learning app used by 90M+ people.
               </p>
               <div className="flex items-center gap-4 text-ink-faint">
                 <a

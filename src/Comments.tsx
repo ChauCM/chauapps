@@ -1,6 +1,6 @@
 import Giscus from '@giscus/react'
 
-// Giscus stores comments in GitHub Discussions — no backend, no DB to run, and
+// Giscus stores comments in GitHub Discussions: no backend, no DB to run, and
 // commenting requires a GitHub login, so spam protection is GitHub's.
 // REPO_ID / CATEGORY_ID come from https://giscus.app after you enable
 // Discussions on the repo and install the giscus GitHub app. Until they're
