@@ -276,9 +276,10 @@ function Portfolio() {
                 million people, and deleted a million lines of code doing it.
               </p>
               <p className="text-[15px] text-ink leading-[1.65] mb-3">
-                Now I build my own: a social goal-tracking app that's live, and a
-                Mandarin app whose pronunciation scorer I picked, benchmarked and
-                host myself. I don't train models. I pick them, stand them up, and
+                Now I build my own, front to back: a social goal-tracking app
+                that's live on both stores, plus the API, the web pages and the
+                store listings behind it. I work with speech models too, though I
+                don't train them. I pick them, benchmark them, stand them up, and
                 keep them running at a cost that works.
               </p>
               <div className="flex items-center gap-4 text-ink-faint">
