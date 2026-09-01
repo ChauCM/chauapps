@@ -63,6 +63,9 @@ const caseStudies: CaseStudy[] = [
     stack: ['Flutter', 'Bloc', 'go_router', 'Lottie', 'Rive', 'Flutter Web', 'Sentry', 'Amplitude'],
     readMore: { label: 'Read the full story', to: '/blog/90-million-users-deserve-a-better-app' },
   },
+  /* MaiSay is temporarily hidden from the site. Uncomment this entry to restore it.
+     Commented out rather than filtered so the copy does not ship in the JS bundle. */
+  /*
   {
     title: 'MaiSay',
     meta: 'Mandarin speaking app · in development',
@@ -77,6 +80,7 @@ const caseStudies: CaseStudy[] = [
     ],
     stack: ['ONNX Runtime', 'Conformer/CTC', 'Flutter', '.NET 10', 'PostgreSQL', 'Render'],
   },
+  */
   {
     title: 'Stepo',
     meta: 'Social goal tracking · live on both stores',
@@ -152,7 +156,7 @@ const howIWork = [
   },
   {
     title: 'I measure before I design around it',
-    body: 'The scorer cost estimate on MaiSay was off by 10x, and nobody would have known without a benchmark that took an afternoon. Guessed numbers become architecture, and architecture is expensive to unguess.',
+    body: 'A cost estimate I was designing around turned out to be off by 10x, and nobody would have known without a benchmark that took an afternoon. Guessed numbers become architecture, and architecture is expensive to unguess.',
   },
   {
     title: 'Decisions go in writing',
