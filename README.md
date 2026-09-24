@@ -74,7 +74,7 @@ ChauApps transforms app ideas into reality with a complete journey from concept 
 - UI/UX design
 - Product strategy and consulting
 
-**Contact**: hello@chauapps.com
+**Contact**: contacts@chauapps.com
 
 ## 📄 License
 

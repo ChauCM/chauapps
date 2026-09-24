@@ -87,7 +87,7 @@
 **Headline:** Have an App Idea? Let's Talk
 **Subtext:** No technical jargon, no confusing contracts, just a friendly conversation about your vision
 **Primary CTA:** Book a Free Discovery Call
-**Secondary Option:** Email: hello@chauapps.com
+**Secondary Option:** Email: contacts@chauapps.com
 
 ## Footer
 ### Quick Links
