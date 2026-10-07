@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-ChauApps marketing site — a React 19 + TypeScript + Vite static frontend. No backend; all data is static or hard-coded in components.
+The Chau Apps company site: a React 19 + TypeScript + Vite static frontend. The home page showcases the company's apps (Stepo, MaiSay) and the founder's writing; `/portfolio` is the founder profile. All content is hard-coded in components.
 
 ## Commands
 
@@ -22,11 +22,13 @@ There are no tests in this repo.
 
 ## Architecture
 
-- **Routing**: `src/main.tsx` mounts a `BrowserRouter` with two routes — `/` → `src/App.tsx` (landing), `/portfolio` → `src/Portfolio.tsx`. SPA fallback is configured in `firebase.json` (`rewrites` send all paths to `/index.html`).
-- **App.tsx** is a comic-themed landing page: hero, scroll-snapping comic panel storyboard (images from `public/images/comic/comic N.jpg`), benefits grid, and footer. Inline-defined `ComicPanel` component handles the alternating left/right zig-zag layout with overlapping negative margins.
+- **Routing**: `src/main.tsx` mounts a `BrowserRouter` with three routes: `/` → `src/App.tsx` (company home), `/portfolio` → `src/Portfolio.tsx` (founder profile), `/blog/:slug` → `src/BlogPost.tsx`. SPA fallback is configured in `firebase.json` (`rewrites` send all paths to `/index.html`).
+- **Shared chrome**: `src/site.tsx` exports `SiteNav`, `SiteFooter` and `ScrollManager` (hash and scroll-to-top handling). Every page uses them; pass `width="wide"` on the home page, default is the 680px reading column. External URLs and the company email live in `src/links.ts`.
+- **App.tsx** is the company home: hero, one panel per app on that app's own brand ground (`stepo` and `maisay` colors in `tailwind.config.js`), the post list from `src/posts.ts`, and a founder section linking to `/portfolio`. Product images are in `public/images/apps/` and come from each app's own store kit or landing page; refresh them from there, do not redraw them.
+- **App status is copy**: "Live on iOS and Android" and "Coming soon" are written in `App.tsx`. Update the MaiSay panel (status, button, store links in `src/links.ts`) when it launches.
 - **Portfolio.tsx** is a self-contained resume/portfolio page; profile image lives at `public/images/profile.jpg`.
-- **Styling** uses Tailwind with a custom `comic-*` color palette (beige/cream/tan/brown/dark/orange) and `brand-*` blues defined in `tailwind.config.js`. Custom keyframe animations (`fade-in-*`, `float`, `glow`, `gradient`, `shimmer`) are also declared there — prefer these tokens over arbitrary hex/keyframes when adding UI.
-- **Animations**: Framer Motion `motion.*` components with `whileInView` + `viewport={{ once: true }}` is the established pattern for scroll-triggered reveals.
+- **Styling** uses Tailwind with `paper`/`ink`/`rule` neutrals and `brand-*` blues. Headings use `font-display` (Bricolage Grotesque), body is Inter.
+- **Animations**: the home page has one page-load fade on the hero and nothing else. Portfolio uses Framer Motion `whileInView` reveals.
 
 ## Deployment
 

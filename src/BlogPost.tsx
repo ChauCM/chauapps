@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { getPost, formatPostDate, readingMinutes } from './posts'
 import { useViewCount } from './lib/useViewCount'
+import { SiteNav, SiteFooter } from './site'
 
 function BlogPost() {
   const { slug } = useParams<{ slug: string }>()
@@ -37,10 +38,12 @@ function BlogPost() {
         style={{ scaleX: scrollYProgress }}
       />
 
-      <main className="flex-1 max-w-2xl w-full mx-auto px-4 sm:px-6 py-12">
+      <SiteNav />
+
+      <main className="flex-1 max-w-[680px] w-full mx-auto px-6 py-10">
         <div className="mb-10">
           <Link
-            to="/"
+            to="/#writing"
             className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-rule rounded-full text-ink-muted hover:text-brand hover:shadow-md transition-all"
           >
             <ArrowLeft className="w-4 h-4" />
@@ -89,7 +92,7 @@ function BlogPost() {
                 </>
               )}
             </div>
-            <h1 className="mt-2 text-3xl md:text-[40px] font-bold text-ink leading-[1.15] tracking-[-0.03em]">
+            <h1 className="font-display mt-2 text-3xl md:text-[40px] font-bold text-ink leading-[1.15] tracking-[-0.03em]">
               {post.title}
             </h1>
           </header>
@@ -102,10 +105,10 @@ function BlogPost() {
         </motion.article>
       </main>
 
-      <footer className="border-t border-rule">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-10">
+      <div className="border-t border-rule">
+        <div className="max-w-[680px] mx-auto px-6 py-10">
           <p className="text-sm text-ink-muted">
-            Written by <span className="font-semibold text-ink">Chau Cao</span>. Reach out or see more:
+            Written by <span className="font-semibold text-ink">Chau Cao</span>, founder of Chau Apps. Reach out or see more:
           </p>
           <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
             <Link
@@ -137,9 +140,9 @@ function BlogPost() {
               <Mail className="w-4 h-4" /> Email
             </a>
           </div>
-          <p className="mt-6 text-xs text-ink-faint">&copy; 2026 Chau Apps Company Limited</p>
         </div>
-      </footer>
+      </div>
+      <SiteFooter />
     </div>
   )
 }

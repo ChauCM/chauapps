@@ -74,11 +74,11 @@ function renderPostMeta(p: {
   const d = escapeHtml(p.description)
   return [
     '<!--meta:start-->',
-    `<title>${t} — ChauApps</title>`,
+    `<title>${t} — Chau Apps</title>`,
     `<meta name="description" content="${d}" />`,
     `<link rel="canonical" href="${p.url}" />`,
     `<meta property="og:type" content="article" />`,
-    `<meta property="og:site_name" content="ChauApps" />`,
+    `<meta property="og:site_name" content="Chau Apps" />`,
     `<meta property="og:title" content="${t}" />`,
     `<meta property="og:description" content="${d}" />`,
     `<meta property="og:url" content="${p.url}" />`,

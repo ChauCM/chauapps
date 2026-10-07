@@ -95,10 +95,17 @@ export default {
           faint: '#737373',
         },
         'rule': '#EAEAEA',
+        // Product grounds on the home page, taken from each app's own brand.
+        'stepo': {
+          DEFAULT: '#FF7A45',
+          deep: '#FA5C33',
+          ink: '#24100A',
+        },
+        'maisay': '#F9D0D8',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['Cal Sans', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Bricolage Grotesque', 'Inter', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

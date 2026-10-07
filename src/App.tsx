@@ -1,249 +1,244 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight, Github, Linkedin, Mail } from 'lucide-react'
 import { posts, formatPostDate, readingMinutes } from './posts'
+import { SiteNav, SiteFooter } from './site'
+import { links } from './links'
 
-const topics = [
-  { name: 'Flutter', dot: 'bg-blue-500' },
-  { name: 'AI in production', dot: 'bg-purple-500' },
-  { name: 'Scale', dot: 'bg-emerald-500' },
-  { name: 'Architecture', dot: 'bg-amber-500' },
+const stepoShots = [
+  { src: '/images/apps/stepo-01.webp', alt: 'Stepo feed with steps that are live right now' },
+  { src: '/images/apps/stepo-02.webp', alt: 'A Stepo step, live for 24 hours' },
+  { src: '/images/apps/stepo-04.webp', alt: 'A Stepo journey read from first step to finale' },
 ]
 
-function App() {
-  const [featured, ...rest] = posts
-
+function Status({ live, children }: { live?: boolean; children: React.ReactNode }) {
   return (
-    <div className="relative min-h-screen bg-paper font-sans text-ink flex flex-col overflow-hidden">
-      {/* Atmosphere: soft brand-tinted glow behind the hero */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px]"
-        style={{
-          background:
-            'radial-gradient(60% 80% at 50% 0%, rgba(0,102,255,0.07), rgba(0,102,255,0.02) 45%, transparent 75%)',
-        }}
-      />
+    <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-[13px] font-semibold text-ink">
+      <span className={`w-2 h-2 rounded-full ${live ? 'bg-emerald-500' : 'bg-amber-500'}`} />
+      {children}
+    </span>
+  )
+}
 
-      <nav className="sticky top-0 left-0 right-0 bg-paper/85 backdrop-blur-md z-40">
-        <div className="max-w-[680px] mx-auto px-6">
-          <div className="flex justify-between items-center h-14">
-            <Link to="/" className="text-base font-semibold tracking-tight text-ink">
-              Chau
-            </Link>
-            <Link
-              to="/portfolio"
-              className="inline-flex items-center gap-1 text-sm text-ink-muted hover:text-brand transition-colors"
-            >
-              Portfolio
-              <ArrowUpRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
-      </nav>
+const sectionTitle =
+  'font-display font-extrabold tracking-[-0.03em] leading-[1.02] text-[clamp(2rem,4.4vw,3.25rem)]'
 
-      <main className="flex-1 max-w-[680px] w-full mx-auto px-6 pt-12 pb-20">
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
+const inkButton =
+  'inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 text-[15px] font-semibold text-white hover:bg-black/80 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink'
+
+function App() {
+  return (
+    <div className="min-h-screen bg-paper font-sans text-ink flex flex-col">
+      <SiteNav width="wide" />
+
+      <main className="flex-1 w-full max-w-[1120px] mx-auto px-4 sm:px-6">
+        <motion.header
+          initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, ease: 'easeOut' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="px-2 pt-14 pb-12 md:pt-24 md:pb-20"
         >
-          <header className="mb-12">
-            <h1 className="text-[44px] md:text-[56px] font-bold tracking-[-0.035em] leading-[1.02] text-ink mb-3">
-              Writing
-            </h1>
-            <p className="text-lg text-ink-muted leading-relaxed mb-6">
-              Notes from the road of building apps for millions.
-            </p>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              {topics.map((t) => (
-                <span
-                  key={t.name}
-                  className="inline-flex items-center gap-1.5 text-[12px] font-medium text-ink-muted"
-                >
-                  <span className={`w-1.5 h-1.5 rounded-full ${t.dot}`} />
-                  {t.name}
-                </span>
-              ))}
-            </div>
-          </header>
+          <h1 className="font-display font-extrabold tracking-[-0.035em] leading-[0.98] text-[clamp(2.6rem,7vw,5.25rem)] max-w-[14ch]">
+            Chau Apps makes its own apps and runs them.
+          </h1>
+          <p className="mt-7 text-lg md:text-xl text-ink-muted leading-relaxed max-w-[52ch]">
+            A software company from Vietnam. Stepo is live on the App
+            Store and Google Play, and MaiSay opens soon. The founder writes
+            about the engineering behind both.
+          </p>
+        </motion.header>
 
-          <section className="mb-14 flex items-start gap-5">
-            <img
-              src="/images/profile.jpg"
-              alt="Cao Minh Chau"
-              className="w-16 h-16 rounded-full object-cover flex-shrink-0 shadow-[0_0_0_1px_rgba(0,0,0,0.06),0_8px_24px_-8px_rgba(0,0,0,0.12)]"
-            />
-            <div className="flex-1 min-w-0">
-              <p className="text-[15px] text-ink-muted leading-[1.65] mb-3">
-                I'm <span className="text-ink font-medium">Chau</span>. I build
-                AI-native apps end to end, from the model to the store listing,
-                and mobile is where I'm deepest. Six years in Flutter, most
-                recently on a language-learning app used by 90M+ people.
-              </p>
-              <div className="flex items-center gap-4 text-ink-faint">
-                <a
-                  href="https://github.com/chaucm"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-brand transition-colors"
-                  aria-label="GitHub"
-                >
-                  <Github className="w-[18px] h-[18px]" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/averagechau/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-brand transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <Linkedin className="w-[18px] h-[18px]" />
-                </a>
-                <a
-                  href="mailto:averagechau@gmail.com"
-                  className="hover:text-brand transition-colors"
-                  aria-label="Email"
-                >
-                  <Mail className="w-[18px] h-[18px]" />
-                </a>
+        <div id="apps" className="scroll-mt-20 flex flex-col gap-5">
+          <section
+            aria-labelledby="stepo-title"
+            className="rounded-[32px] overflow-hidden text-stepo-ink bg-gradient-to-b from-stepo to-stepo-deep"
+          >
+            <div className="grid lg:grid-cols-[5fr_7fr] gap-10 lg:gap-8 px-6 pt-8 sm:px-10 sm:pt-12 lg:pl-14 lg:pr-10">
+              <div className="lg:pb-14 lg:self-center">
+                <div className="flex flex-wrap items-center gap-3 mb-8">
+                  <img
+                    src="/images/apps/stepo-icon.svg"
+                    alt=""
+                    className="w-12 h-12 rounded-[12px] ring-2 ring-stepo-ink/15"
+                  />
+                  <span id="stepo-title" className="font-display text-2xl font-bold tracking-tight">
+                    Stepo
+                  </span>
+                  <Status live>Live on iOS and Android</Status>
+                </div>
+                <h2 className={`${sectionTitle} mb-5`}>Share the journey, one step at a time.</h2>
+                <p className="text-[17px] leading-relaxed max-w-[44ch] mb-8">
+                  Stepo turns a goal into a journey you share one step at a
+                  time. Each step is live for 24 hours, the window when the
+                  people following you can heart it, comment or share. Show up
+                  while it's live and the journey remembers you were there.
+                </p>
+                <div className="flex flex-wrap items-center gap-3">
+                  <a href={links.stepoAppStore} target="_blank" rel="noopener noreferrer" className={inkButton}>
+                    Get it on the App Store
+                  </a>
+                  <a href={links.stepoPlay} target="_blank" rel="noopener noreferrer" className={inkButton}>
+                    Get it on Google Play
+                  </a>
+                  <a
+                    href={links.stepo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2 py-3 text-[15px] font-semibold underline underline-offset-4 decoration-2 hover:decoration-stepo-ink/40"
+                  >
+                    stepo.app
+                  </a>
+                </div>
+              </div>
+
+              {/* Staggered like the pills in the Stepo mark; the panel crops the bottoms. */}
+              <div className="grid grid-cols-3 gap-3 sm:gap-4 items-start max-h-[340px] sm:max-h-[460px] lg:max-h-none lg:self-end lg:-mb-12">
+                {stepoShots.map((shot, i) => (
+                  <img
+                    key={shot.src}
+                    src={shot.src}
+                    alt={shot.alt}
+                    loading="lazy"
+                    width={720}
+                    height={1558}
+                    className="w-full h-auto rounded-2xl shadow-[0_18px_40px_-12px_rgba(60,15,0,0.45)]"
+                    style={{ marginTop: `${[0, 12, 5][i]}%` }}
+                  />
+                ))}
               </div>
             </div>
           </section>
 
-          <div className="flex items-center gap-3 mb-7">
-            <h2 className="text-[11px] font-semibold tracking-[0.16em] uppercase text-ink-faint">
-              Latest
-            </h2>
-            <div className="h-px flex-1 bg-rule" />
-          </div>
-
-          {featured && (
-            <article className="mb-12">
-              <Link to={`/blog/${featured.slug}`} className="group block">
-                {featured.cover && (
-                  <div className="relative aspect-[16/9] rounded-2xl overflow-hidden bg-rule/40 mb-6 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_12px_40px_-12px_rgba(0,0,0,0.18)]">
-                    <img
-                      src={featured.cover}
-                      alt=""
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                    <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-2.5 py-1 bg-paper/90 backdrop-blur-sm rounded-full text-[11px] font-semibold uppercase tracking-[0.1em] text-brand">
-                      <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse" />
-                      Featured
-                    </div>
-                  </div>
-                )}
-                <div className="flex items-center gap-2 text-[13px] text-ink-faint mb-3">
-                  <time>{formatPostDate(featured.date)}</time>
-                  <span aria-hidden="true">·</span>
-                  <span>{readingMinutes(featured.content)} min read</span>
+          <section aria-labelledby="maisay-title" className="rounded-[32px] overflow-hidden bg-maisay text-ink">
+            <div className="grid lg:grid-cols-[6fr_5fr] gap-8 lg:gap-6 px-6 pt-8 sm:px-10 sm:pt-12 lg:pl-10 lg:pr-14">
+              <div className="lg:order-2 lg:pb-14 lg:self-center">
+                <div className="flex flex-wrap items-center gap-3 mb-8">
+                  <img
+                    src="/images/apps/maisay-icon.webp"
+                    alt=""
+                    className="w-12 h-12 rounded-[12px] ring-2 ring-ink/10"
+                  />
+                  <span id="maisay-title" className="font-display text-2xl font-bold tracking-tight">
+                    MaiSay
+                  </span>
+                  <Status>Coming soon</Status>
                 </div>
-                <h3 className="text-[26px] md:text-[30px] font-bold tracking-[-0.025em] leading-[1.15] text-ink group-hover:text-brand transition-colors mb-3">
-                  {featured.title}
-                </h3>
-                <p className="text-[16px] text-ink-muted leading-relaxed mb-4">
-                  {featured.excerpt}
+                <h2 className={`${sectionTitle} mb-5`}>Speak Mandarin. Graded like a teacher.</h2>
+                <p className="text-[17px] leading-relaxed text-ink-muted max-w-[44ch] mb-8">
+                  MaiSay is a Mandarin course built around speaking. Say a
+                  sentence out loud and it scores every syllable on its
+                  initial, final and tone, then shows the one fix to make.
+                  Coming to iOS and Android.
                 </p>
-                <span className="inline-flex items-center gap-1.5 text-sm font-medium text-brand">
-                  Read post
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </span>
-              </Link>
-            </article>
-          )}
-
-          {rest.length > 0 && (
-            <ul className="flex flex-col">
-              {rest.map((post) => (
-                <li key={post.slug}>
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="group flex gap-5 py-6 border-b border-rule last:border-b-0"
+                <div className="flex flex-wrap items-center gap-3">
+                  <a href={links.maisay} target="_blank" rel="noopener noreferrer" className={inkButton}>
+                    Join the waitlist
+                  </a>
+                  <a
+                    href={links.maisay}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-2 py-3 text-[15px] font-semibold underline underline-offset-4 decoration-2 hover:decoration-ink/40"
                   >
+                    maisay.app
+                  </a>
+                </div>
+              </div>
+
+              <div className="relative lg:order-1 min-h-[300px] sm:min-h-[400px] lg:min-h-[480px]">
+                <img
+                  src="/images/apps/maisay-syllables.webp"
+                  alt="MaiSay scoring each syllable of a spoken sentence, with one syllable flagged"
+                  loading="lazy"
+                  className="absolute left-0 top-0 w-[78%] max-w-[440px] -rotate-2"
+                />
+                <img
+                  src="/images/apps/maisay-fix.webp"
+                  alt="MaiSay naming the one sound to repair: aim for zh, not z"
+                  loading="lazy"
+                  className="absolute left-[16%] top-[38%] w-[66%] max-w-[380px] rotate-3"
+                />
+                <img
+                  src="/images/apps/maisay-mai.webp"
+                  alt="Mai, the MaiSay mascot, reading a book"
+                  loading="lazy"
+                  className="absolute right-0 bottom-0 w-[36%] max-w-[230px]"
+                />
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section id="writing" aria-labelledby="writing-title" className="scroll-mt-20 px-2 pt-20 md:pt-28">
+          <div className="grid lg:grid-cols-[4fr_7fr] gap-8 lg:gap-12">
+            <div>
+              <h2 id="writing-title" className={`${sectionTitle} mb-4`}>
+                Writing from the founder
+              </h2>
+              <p className="text-[17px] text-ink-muted leading-relaxed max-w-[36ch]">
+                Chau writes up what the work actually involved: the migrations,
+                the numbers, and the parts that went wrong first.
+              </p>
+            </div>
+            <ul className="flex flex-col border-t border-rule">
+              {posts.map((post) => (
+                <li key={post.slug} className="border-b border-rule">
+                  <Link to={`/blog/${post.slug}`} className="group grid sm:grid-cols-[200px_1fr] gap-5 py-6">
                     {post.cover && (
-                      <div className="hidden sm:block w-28 h-20 rounded-lg overflow-hidden flex-shrink-0 bg-rule/40">
-                        <img
-                          src={post.cover}
-                          alt=""
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
+                      <div className="aspect-[16/10] rounded-xl overflow-hidden bg-rule/40">
+                        <img src={post.cover} alt="" className="w-full h-full object-cover" />
                       </div>
                     )}
-                    <div className="flex-1 min-w-0">
-                      <div className="text-[12px] text-ink-faint mb-1.5">
-                        {formatPostDate(post.date)} · {readingMinutes(post.content)} min
-                      </div>
-                      <h3 className="text-[18px] font-semibold tracking-[-0.015em] leading-snug text-ink group-hover:text-brand transition-colors mb-1.5">
+                    <div>
+                      <h3 className="font-display text-[22px] font-bold tracking-[-0.02em] leading-snug text-ink group-hover:text-brand transition-colors mb-2">
                         {post.title}
                       </h3>
-                      <p className="text-[14px] text-ink-muted leading-relaxed line-clamp-2">
-                        {post.excerpt}
-                      </p>
+                      <p className="text-[15px] text-ink-muted leading-relaxed mb-3">{post.excerpt}</p>
+                      <div className="text-[13px] text-ink-faint">
+                        <time dateTime={post.date}>{formatPostDate(post.date)}</time>,{' '}
+                        {readingMinutes(post.content)} min read
+                      </div>
                     </div>
                   </Link>
                 </li>
               ))}
             </ul>
-          )}
-
-          <div className="mt-16 rounded-2xl border border-rule bg-white/60 backdrop-blur-sm p-6 flex items-center gap-4">
-            <div className="w-10 h-10 rounded-xl bg-brand/10 text-brand flex items-center justify-center flex-shrink-0">
-              <Mail className="w-[18px] h-[18px]" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="text-[15px] font-semibold text-ink leading-tight mb-0.5">
-                Working on something Flutter-shaped?
-              </div>
-              <div className="text-[13px] text-ink-muted">
-                I'm open to interesting mobile engineering work.
-              </div>
-            </div>
-            <a
-              href="mailto:averagechau@gmail.com"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:text-brand-700 transition-colors whitespace-nowrap"
-            >
-              Say hi
-              <ArrowRight className="w-4 h-4" />
-            </a>
           </div>
-        </motion.div>
+        </section>
+
+        <section aria-labelledby="founder-title" className="px-2 pt-20 pb-20 md:pt-28 md:pb-28">
+          <div className="grid lg:grid-cols-[4fr_7fr] gap-8 lg:gap-12">
+            <h2 id="founder-title" className={sectionTitle}>
+              Who is behind it
+            </h2>
+            <div className="flex flex-col sm:flex-row items-start gap-6">
+              <img
+                src="/images/profile.jpg"
+                alt="Chau Cao"
+                className="w-24 h-24 rounded-full object-cover flex-shrink-0"
+              />
+              <div>
+                <p className="text-[19px] leading-relaxed text-ink max-w-[50ch] mb-4">
+                  I'm Chau. I started Chau Apps after six years of building
+                  mobile apps for other companies, most recently at ELSA, where
+                  I re-architected an app used by 90 million people.
+                </p>
+                <p className="text-[17px] leading-relaxed text-ink-muted max-w-[52ch] mb-6">
+                  Now I work on Chau Apps' products front to back: the app, the
+                  API, the speech scoring, the web pages and the store listings.
+                </p>
+                <Link
+                  to="/portfolio"
+                  className="inline-flex items-center justify-center rounded-full border-2 border-ink px-5 py-2.5 text-[15px] font-semibold text-ink hover:bg-ink hover:text-white transition-colors"
+                >
+                  See the founder's portfolio
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
-      <footer className="border-t border-rule">
-        <div className="max-w-[680px] mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="text-xs text-ink-faint">
-            &copy; 2026 Chau Apps Company Limited
-          </div>
-          <div className="flex items-center gap-4 text-ink-faint">
-            <a
-              href="https://github.com/chaucm"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-brand transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="w-4 h-4" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/averagechau/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-brand transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a
-              href="mailto:averagechau@gmail.com"
-              className="hover:text-brand transition-colors"
-              aria-label="Email"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter width="wide" />
     </div>
   )
 }

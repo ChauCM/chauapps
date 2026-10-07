@@ -1,83 +1,52 @@
-# ChauApps - Turn Your App Idea Into Reality
+# chauapps.com
 
-A modern, responsive landing page for ChauApps - a company that transforms app ideas into successful mobile and web applications.
+The Chau Apps company site. The home page showcases the apps (Stepo and MaiSay) and the founder's writing, and `/portfolio` is the founder profile.
 
-## 🚀 Quick Start
+## Run it
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
 ```
 
-## 📦 Tech Stack
-
-- **React 19** - UI framework
-- **TypeScript** - Type safety
-- **Vite** - Build tool and dev server
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Animation library
-- **Lucide React** - Icon library
-- **React Hot Toast** - Toast notifications
-
-## 🛠️ Available Scripts
-
 ```bash
-npm run dev      # Start development server
-npm run build    # Build for production
-npm run preview  # Preview production build
-npm run lint     # Run ESLint
-```
-
-## 🚢 Deployment
-
-Build the project for production:
-
-```bash
-# Build the project
 npm run build
-
-# Preview the build locally
-npm run preview
 ```
 
-The production files will be in the `dist` directory, ready to be deployed to any static hosting service.
-
-## 🎨 Features
-
-- **Responsive Design** - Mobile-first approach with smooth animations
-- **Contact Form** - Simple form with client-side validation
-- **Smooth Scrolling** - Navigation with progress indicator
-- **Animation Effects** - Engaging UI with Framer Motion
-- **SEO Optimized** - Meta tags and semantic HTML structure
-
-## 📁 Project Structure
-
-```
-chauapps/
-├── src/
-│   ├── App.tsx           # Main application component
-│   ├── main.tsx          # Application entry point
-│   └── index.css         # Global styles and Tailwind imports
-├── public/               # Static assets
-└── package.json          # Dependencies and scripts
+```bash
+npm run lint
 ```
 
-## 🏢 About ChauApps
+## Deploy
 
-ChauApps transforms app ideas into reality with a complete journey from concept to launch. We specialize in:
+Hosting is Firebase. `deploy.sh` builds first, then deploys hosting and the Firestore rules.
 
-- Mobile app development (iOS & Android)
-- Web application development
-- UI/UX design
-- Product strategy and consulting
+```bash
+./deploy.sh
+```
 
-**Contact**: contacts@chauapps.com
+## Where things are
 
-## 📄 License
+| Path | What it is |
+|---|---|
+| `src/App.tsx` | Home page: hero, Stepo and MaiSay panels, post list, founder section |
+| `src/Portfolio.tsx` | Founder profile |
+| `src/BlogPost.tsx` | Blog post reader |
+| `src/site.tsx` | Shared nav and footer |
+| `src/links.ts` | Store links, app sites, company email |
+| `src/posts.ts` | Post list; the markdown itself is in `contents/` |
+| `public/images/apps/` | App icons and screenshots, copied from each app's store kit or landing page |
 
-© 2025 CHAU APPS COMPANY LIMITED. All rights reserved.
+To add a post, add it to `src/posts.ts` and to the `posts` array in `vite.config.ts`. The second one generates the per-post social preview tags at build time.
 
-Business Registration: 0318597324
+App status ("Live on iOS and Android", "Coming soon") is plain copy in `src/App.tsx`. Update the MaiSay panel there when it launches.
+
+## Stack
+
+React 19, TypeScript, Vite, Tailwind CSS, React Router, Framer Motion. Firestore is used only for blog view counts.
+
+## Contact
+
+contacts@chauapps.com
+
+© 2026 Chau Apps Company Limited

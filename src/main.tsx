@@ -5,10 +5,12 @@ import './index.css'
 import App from './App.tsx'
 import Portfolio from './Portfolio.tsx'
 import BlogPost from './BlogPost.tsx'
+import { ScrollManager } from './site.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
+      <ScrollManager />
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/portfolio" element={<Portfolio />} />

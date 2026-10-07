@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Phone, ArrowLeft, ArrowRight, ArrowUpRight } from 'lucide-react'
+import { Github, Linkedin, Mail, ArrowRight, ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { SiteNav, SiteFooter } from './site'
 
 const topics = [
   { name: 'Flutter', dot: 'bg-blue-500' },
@@ -12,7 +13,7 @@ const topics = [
 const proof = [
   { value: '90M', label: 'users on the app I re-architected' },
   { value: '1M', label: 'lines of code deleted at ELSA' },
-  { value: '4', label: 'surfaces shipped solo, app to store listing' },
+  { value: '4', label: 'surfaces shipped, app to store listing' },
 ]
 
 type ProjectImage = {
@@ -63,12 +64,15 @@ const caseStudies: CaseStudy[] = [
     stack: ['Flutter', 'Bloc', 'go_router', 'Lottie', 'Rive', 'Flutter Web', 'Sentry', 'Amplitude'],
     readMore: { label: 'Read the full story', to: '/blog/90-million-users-deserve-a-better-app' },
   },
-  /* MaiSay is temporarily hidden from the site. Uncomment this entry to restore it.
-     Commented out rather than filtered so the copy does not ship in the JS bundle. */
-  /*
   {
     title: 'MaiSay',
-    meta: 'Mandarin speaking app · in development',
+    meta: 'Mandarin speaking course · waitlist open',
+    url: 'https://maisay.app',
+    urlLabel: 'maisay.app',
+    images: [
+      { src: '/images/apps/maisay-syllables.webp', alt: 'MaiSay scoring each syllable of a spoken sentence', fit: 'contain', flex: 1.15 },
+      { src: '/images/apps/maisay-fix.webp', alt: 'MaiSay naming the one sound to repair', fit: 'contain' },
+    ],
     problem:
       'Learning apps test everything except the thing people actually want: whether you can say it. Scoring a spoken syllable means grading its initial, final and tone separately, and doing it without telling a Vietnamese learner they are wrong when a teacher would have accepted them.',
     built:
@@ -80,7 +84,6 @@ const caseStudies: CaseStudy[] = [
     ],
     stack: ['ONNX Runtime', 'Conformer/CTC', 'Flutter', '.NET 10', 'PostgreSQL', 'Render'],
   },
-  */
   {
     title: 'Stepo',
     meta: 'Social goal tracking · live on both stores',
@@ -95,7 +98,7 @@ const caseStudies: CaseStudy[] = [
     problem:
       'Goals are easier to keep when someone is watching. Stepo turns a goal into a journey of steps, and every step stays live for 24 hours: the window where the people following you can react before it settles into the story.',
     built:
-      'Built solo, end to end. Flutter client, ASP.NET API, SvelteKit web for the public share pages, and the store listings themselves. Infrastructure is defined as code across staging and production, and the mobile client is generated from the API\'s OpenAPI spec so the two cannot drift.',
+      'Built end to end. Flutter client, ASP.NET API, SvelteKit web for the public share pages, and the store listings themselves. Infrastructure is defined as code across staging and production, and the mobile client is generated from the API\'s OpenAPI spec so the two cannot drift.',
     metrics: [
       { value: '4', label: 'surfaces: app, API, web, store' },
       { value: '155', label: 'test files and test classes' },
@@ -202,22 +205,7 @@ function Portfolio() {
         }}
       />
 
-      <nav className="sticky top-0 left-0 right-0 bg-paper/85 backdrop-blur-md z-40">
-        <div className="max-w-[680px] mx-auto px-6">
-          <div className="flex justify-between items-center h-14">
-            <Link to="/" className="text-base font-semibold tracking-tight text-ink">
-              Chau
-            </Link>
-            <Link
-              to="/"
-              className="inline-flex items-center gap-1 text-sm text-ink-muted hover:text-brand transition-colors"
-            >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              Writing
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <SiteNav />
 
       <main className="flex-1 max-w-[680px] w-full mx-auto px-6 pt-12 pb-20">
         <motion.div
@@ -227,9 +215,9 @@ function Portfolio() {
         >
           <header className="mb-10">
             <div className="text-[11px] font-semibold tracking-[0.16em] uppercase text-ink-faint mb-3">
-              Portfolio
+              Founder, Chau Apps
             </div>
-            <h1 className="text-[44px] md:text-[56px] font-bold tracking-[-0.035em] leading-[1.02] text-ink mb-4">
+            <h1 className="font-display text-[44px] md:text-[56px] font-bold tracking-[-0.035em] leading-[1.02] text-ink mb-4">
               Cao Minh Chau
             </h1>
             <p className="text-lg text-ink leading-relaxed mb-6 max-w-[36ch] md:max-w-none">
@@ -277,10 +265,10 @@ function Portfolio() {
               </p>
               <p className="text-[15px] text-ink leading-[1.65] mb-3">
                 Now I build my own, front to back: a social goal-tracking app
-                that's live on both stores, plus the API, the web pages and the
-                store listings behind it. I work with speech models too, though I
-                don't train them. I pick them, benchmark them, stand them up, and
-                keep them running at a cost that works.
+                that's live on both stores, and a Mandarin speaking course whose
+                pronunciation scorer I picked, benchmarked and host. I don't
+                train models. I pick them, stand them up, and keep them running
+                at a cost that works.
               </p>
               <div className="flex items-center gap-4 text-ink-faint">
                 <a
@@ -496,47 +484,7 @@ function Portfolio() {
         </motion.div>
       </main>
 
-      <footer className="border-t border-rule">
-        <div className="max-w-[680px] mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="text-xs text-ink-faint">
-            &copy; 2026 Chau Apps Company Limited
-          </div>
-          <div className="flex items-center gap-4 text-ink-faint">
-            <a
-              href="https://github.com/chaucm"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-brand transition-colors"
-              aria-label="GitHub"
-            >
-              <Github className="w-4 h-4" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/averagechau/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-brand transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
-            <a
-              href="mailto:averagechau@gmail.com"
-              className="hover:text-brand transition-colors"
-              aria-label="Email"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
-            <a
-              href="tel:+84876543444"
-              className="hover:text-brand transition-colors"
-              aria-label="Phone"
-            >
-              <Phone className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }
